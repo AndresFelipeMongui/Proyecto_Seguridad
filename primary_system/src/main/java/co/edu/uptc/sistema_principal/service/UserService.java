@@ -17,9 +17,11 @@ public class UserService {
 
    
     private UserRepository userRepository;
+    private TwoFactorService twoFactorService;
 
-    public UserService(UserRepository userRepository){
+    public UserService(UserRepository userRepository, TwoFactorService twoFactorService){
         this.userRepository=userRepository;
+        this.twoFactorService=twoFactorService;
     }
 
 
@@ -42,13 +44,16 @@ public class UserService {
     public LoginResponse login(Login user){
    
         
-             User user2=userRepository.findByUserName(user.getUserName()).orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+             User user2=userRepository.findByUserName(user.getUserName()).orElse(null);
         
+             if (user2==null){
+                return new LoginResponse("Usuario no existente", false,false,null);
+             }
     if(!user2.getPassword().equals(user.getPassword())){
-        return new LoginResponse("Contraseña incorrecta", false);
+        return new LoginResponse("Contraseña incorrecta", false,false,null);
     }
-
-    return new LoginResponse("Inicio de sesion correcyo", true);
+String code=twoFactorService.generateCode(user2.getUserName());
+    return new LoginResponse("Inicio de sesion correcto", false,true,code);
     }
 
 

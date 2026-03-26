@@ -13,8 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.uptc.sistema_principal.dto.Login;
 import co.edu.uptc.sistema_principal.dto.LoginResponse;
+import co.edu.uptc.sistema_principal.dto.TwoFactor;
+import co.edu.uptc.sistema_principal.dto.TwoFactorResponse;
 import co.edu.uptc.sistema_principal.dto.UserRegister;
 import co.edu.uptc.sistema_principal.model.User;
+import co.edu.uptc.sistema_principal.service.TwoFactorService;
 import co.edu.uptc.sistema_principal.service.UserService;
 
 @RestController
@@ -22,9 +25,11 @@ import co.edu.uptc.sistema_principal.service.UserService;
 public class UserController {
     
     UserService userService;
+    TwoFactorService twoFactorService;
 
-public UserController(UserService userService){
+public UserController(UserService userService, TwoFactorService twoFactorService){
     this.userService=userService;
+    this.twoFactorService=twoFactorService;
 }
 
     @PostMapping("/save")
@@ -37,9 +42,17 @@ public UserController(UserService userService){
         return ResponseEntity.ok(user);
     }
 
+    //http://localhost:8081/users/login
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> login(@Validated @RequestBody Login user){
         return ResponseEntity.ok(userService.login(user));
+    }
+
+    //http://localhost:8081/users/verify
+
+    @PostMapping("/verify")
+    public ResponseEntity<TwoFactorResponse> verifyTwoFactor(@Validated @RequestBody TwoFactor request){
+        return ResponseEntity.ok(twoFactorService.validateCode(request));
     }
 
 }

@@ -5,11 +5,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class LoginResponse {
+@AllArgsConstructor
+public class TwoFactorResponse {
+
     private String message;
-    private boolean autenticated;
-    private boolean secondFactor;
-    private String code;
+    private boolean accesGranted;
+    
 }
