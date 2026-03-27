@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+//El objeto o body que se ennvia desde el sistema principal al sistema secundario
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

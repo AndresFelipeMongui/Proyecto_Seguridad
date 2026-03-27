@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+//Devuelve si el mensage fue aceptado o no
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

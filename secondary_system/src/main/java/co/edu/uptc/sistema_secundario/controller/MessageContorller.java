@@ -11,6 +11,7 @@ import co.edu.uptc.sistema_secundario.dtos.IncomingMessage;
 import co.edu.uptc.sistema_secundario.dtos.IntegrityResponse;
 import co.edu.uptc.sistema_secundario.service.MessageReceive;
 
+
 @RestController
 @RequestMapping("/message")
 public class MessageContorller {

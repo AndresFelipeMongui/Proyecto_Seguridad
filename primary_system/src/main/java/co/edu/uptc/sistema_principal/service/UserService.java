@@ -11,7 +11,7 @@ import co.edu.uptc.sistema_principal.dto.LoginResponse;
 import co.edu.uptc.sistema_principal.dto.UserRegister;
 import co.edu.uptc.sistema_principal.model.User;
 import co.edu.uptc.sistema_principal.repository.UserRepository;
-
+//Logica de registro
 @Service
 public class UserService {
 

@@ -3,6 +3,7 @@ package co.edu.uptc.sistema_principal.service;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 
+// Genera el hash
 import org.springframework.stereotype.Service;
 @Service
 public class HashService {

@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 import co.edu.uptc.sistema_secundario.dtos.IncomingMessage;
 import co.edu.uptc.sistema_secundario.dtos.IntegrityResponse;
-
+// Compara el hash recibido con el original
 @Service
 public class MessageReceive {
     private HashService hashService;
